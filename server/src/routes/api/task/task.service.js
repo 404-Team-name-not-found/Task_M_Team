@@ -10,8 +10,7 @@ const TABLE_NAME = "Tasks";
  */
 async function getTasks() {
     try {
-        let res;
-        await genericQueries.getItems(TABLE_NAME).then((queryResult) => { res = queryResult; });
+        const res = await genericQueries.getItems(TABLE_NAME);
         return { tasks: res, status: StatusCodes.OK };
     } catch (err) {
         return { status: StatusCodes.BAD_REQUEST, error: err.message };
@@ -27,12 +26,10 @@ async function getTasks() {
  */
 async function getTask(id) {
     try {
-        let isExist;
-        await genericQueries.isExist(TABLE_NAME, "id", id).then((queryResult) => { isExist = queryResult });
+        const isExist = await genericQueries.isExist(TABLE_NAME, "id", id);
         if (!isExist) throw new Error(`Task with this id does not exist`);
 
-        let res;
-        await genericQueries.getItem(TABLE_NAME, "id", id).then((queryResult) => { res = queryResult });
+        const res = await genericQueries.getItem(TABLE_NAME, "id", id);
         return { task: res[0], status: StatusCodes.OK };
     }
     catch (err) {
@@ -49,8 +46,7 @@ async function getTask(id) {
  */
 async function addTask(newTask) {
     try {
-        let isExist;
-        await genericQueries.isExist(TABLE_NAME, "name", newTask.name).then((queryResult) => { isExist = queryResult });
+        const isExist = await genericQueries.isExist(TABLE_NAME, "name", newTask.name);
         if (isExist) throw new Error(`Task with this name already exists`);
 
         await genericQueries.insertItem(TABLE_NAME, newTask);
@@ -71,8 +67,7 @@ async function addTask(newTask) {
  */
 async function updateTask(id, change) {
     try {
-        let isExist;
-        await genericQueries.isExist(TABLE_NAME, "id", id).then((queryResult) => { isExist = queryResult });
+        const isExist = await genericQueries.isExist(TABLE_NAME, "id", id);
         if (!isExist) throw new Error(`Task with the id- ${id} does not exist`);
         await genericQueries.updateSpecificItem("id", id, TABLE_NAME, change);
         return { status: StatusCodes.OK };

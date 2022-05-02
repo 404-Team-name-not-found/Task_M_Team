@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const genericQueries = require("../genericCrudQueries");
+const genericQueries = require("./genericCrudQueries");
 
 /**
  * Used to generate a service for the given item

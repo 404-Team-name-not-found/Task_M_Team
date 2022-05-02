@@ -1,37 +1,38 @@
 const { StatusCodes } = require('http-status-codes');
-const genericQueries = require("../../../../services/genericCrudQueries")
+const genericQueries = require("../genericCrudQueries")
 
-const TABLE_NAME = "tasks";
 
-/**
- * Used to get all existing tasks.
+const genericService = (TABLE_NAME)=>{
+    /**
+ * Used to get all existing items.
  * 
- * @returns relevant status code and array of all the task objects.
+ * @returns relevant status code and array of all the item objects.
  */
-async function getTasks() {
+async function getitems() {
     try {
+       
         const res = await genericQueries.getItems(TABLE_NAME);
-        return { tasks: res, status: StatusCodes.OK };
+        return { items: res, status: StatusCodes.OK };
     } catch (err) {
         return { status: StatusCodes.BAD_REQUEST, error: err.message };
     }
 }
 
 /**
- * Used to get a task by id.
+ * Used to get a item by id.
  *
- * @param {number} id (number representing the task's id)
+ * @param {number} id (number representing the item's id)
  * 
- * @returns relevant status code and the wanted task object.
+ * @returns relevant status code and the wanted item object.
  */
-async function getTask(id) {
+async function getitem(id) {
     try {
         const isExist = await genericQueries.isExist(TABLE_NAME, "id", id);
-        if (!isExist) throw new Error(`Task with this id does not exist`);
+        if (!isExist) throw new Error(`item with this id does not exist`);
 
         const res = await genericQueries.getItem(TABLE_NAME, "id", id);
-        console.log(res[0]);
-        return { task: res[0], status: StatusCodes.OK };
+        console.log(res);
+        return { item: res, status: StatusCodes.OK };
     }
     catch (err) {
         return { status: StatusCodes.BAD_REQUEST, error: err.message };
@@ -39,18 +40,18 @@ async function getTask(id) {
 }
 
 /**
- * Used to add a task.
+ * Used to add a item.
  *
- * @param {object} newTask (object representing the new task object to add)}
+ * @param {object} newitem (object representing the new item object to add)}
  * 
  * @returns relevant status code.
  */
-async function addTask(newTask) {
+async function additem(newitem) {
     try {
-        const isExist = await genericQueries.isExist(TABLE_NAME, "name", newTask.name);
-        if (isExist) throw new Error(`Task with this name already exists`);
+        const isExist = await genericQueries.isExist(TABLE_NAME, "name", newitem.name);
+        if (isExist) throw new Error(`item with this name already exists`);
 
-        await genericQueries.insertItem(TABLE_NAME, newTask);
+        await genericQueries.insertItem(TABLE_NAME, newitem);
         return { status: StatusCodes.OK };
     }
     catch (err) {
@@ -59,17 +60,17 @@ async function addTask(newTask) {
 }
 
 /**
- * Used to update a task.
+ * Used to update a item.
  *
- * @param {object} id (string representing the task's id)
+ * @param {object} id (string representing the item's id)
  * @param {object} change (object representing the properties to change)
  *
  * @returns relevant status code.
  */
-async function updateTask(id, change) {
+async function updateitem(id, change) {
     try {
         const isExist = await genericQueries.isExist(TABLE_NAME, "id", id);
-        if (!isExist) throw new Error(`Task with the id- ${id} does not exist`);
+        if (!isExist) throw new Error(`item with the id- ${id} does not exist`);
         await genericQueries.updateSpecificItem("id", id, TABLE_NAME, change);
         return { status: StatusCodes.OK };
     }
@@ -79,16 +80,16 @@ async function updateTask(id, change) {
 }
 
 /**
- * Used to delete a task.
+ * Used to delete a item.
  *
- * @param {number} id (number representing the task's id)
+ * @param {number} id (number representing the item's id)
  * 
  * @returns relevant status code.
  */
-async function deleteTask(id) {
+async function deleteitem(id) {
     try {
         const isExist = await genericQueries.isExist(TABLE_NAME, "id", id);
-        if (!isExist) throw new Error(`Task with the id- ${id} does not exist`);
+        if (!isExist) throw new Error(`item with the id- ${id} does not exist`);
         await genericQueries.deleteItem(TABLE_NAME, "id", id);
         return { status: StatusCodes.OK };
     }
@@ -96,5 +97,9 @@ async function deleteTask(id) {
         return { status: StatusCodes.BAD_REQUEST, error: error.message };
     }
 }
+   
+    return {getitem,getitems,deleteitem,updateitem,additem};
+}
 
-module.exports = { getTasks, getTask, addTask, updateTask, deleteTask, };
+
+module.exports =  {genericService} ;

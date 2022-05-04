@@ -1,7 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
-const genericQueries = require("../../../../services/genericCrudQueries")
+const genericQueries = require("../../../../services/generic/genericCrudQueries")
 
-const TABLE_NAME = "Tasks";
+const TABLE_NAME = "tasks";
 
 /**
  * Used to get all existing tasks.
@@ -30,6 +30,7 @@ async function getTask(id) {
         if (!isExist) throw new Error(`Task with this id does not exist`);
 
         const res = await genericQueries.getItem(TABLE_NAME, "id", id);
+        console.log(res[0]);
         return { task: res[0], status: StatusCodes.OK };
     }
     catch (err) {

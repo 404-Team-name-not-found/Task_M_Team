@@ -1,4 +1,4 @@
-const pool = require("./sql.connections").pool;
+const pool = require("../sql.connections").pool;
 
 //helper function
 const getKeysAndValues = (object) => {
@@ -37,8 +37,7 @@ async function getItem(tableName, property, value) {
  * @resolve The row that was deleted
  */
 async function deleteItem(tableName, property, value) {
-  const res = await pool.query(
-    `DELETE FROM "${tableName}" WHERE ${property}='${value}' RETURNING * `);
+  const res = await pool.query(`DELETE FROM "${tableName}" WHERE ${property}='${value}' RETURNING * `);
   return res.rows;
 }
 
@@ -50,15 +49,14 @@ async function deleteItem(tableName, property, value) {
  * @resolve true if exist, false otherwise
  */
 async function isExist(tablename, colname, value) {
-  const res = await pool
-    .query(`SELECT count(1) FROM  "${tablename}" where ${colname}='${value}'`)
+  const res = await pool.query(`SELECT count(1) FROM  "${tablename}" where ${colname}='${value}'`);
   return res.rows[0].count >= 1;
 }
 
 /**
  * Used to update a specific item with where primaryKey = value
  * @param {string} primaryKey item primary key
- * @param {*} value 
+ * @param {*} value
  * @param {string} tableName the table name
  * @param {Object} change the object AFTER the change
  * @resolve the updated row
@@ -72,9 +70,9 @@ async function updateSpecificItem(primaryKey, value, tableName, change) {
 }
 
 /**
- * Used to send a custom query 
- * @param {string} query 
- * @param {array} values 
+ * Used to send a custom query
+ * @param {string} query
+ * @param {array} values
  * @resolve The query result
  */
 async function sendCustomQuery(query, values) {
@@ -84,17 +82,17 @@ async function sendCustomQuery(query, values) {
 
 /**
  * Used to insert a item into the db
- * @param {string} tablename 
- * @param {*} objectToInsert 
+ * @param {string} tablename
+ * @param {*} objectToInsert
  * @resolve the created item
  */
 async function insertItem(tablename, objectToInsert) {
-  const [keys,values]= getKeysAndValues(objectToInsert);
-  const pramKeys = keys.map((item) => `"${item}"` ).join(',');
-  const valuesString = [...Array(values.length)].map((c,index)=> `$${index+1}`).join(',');
-  const query= `INSERT INTO "${tablename}" (${pramKeys}) VALUES (${valuesString}) RETURNING *`;
-  const res = await pool.query(query,values);
+  const [keys, values] = getKeysAndValues(objectToInsert);
+  const pramKeys = keys.map((item) => `"${item}"`).join(",");
+  const valuesString = [...Array(values.length)].map((c, index) => `$${index + 1}`).join(",");
+  const query = `INSERT INTO "${tablename}" (${pramKeys}) VALUES (${valuesString}) RETURNING *`;
+  const res = await pool.query(query, values);
   return res.rows;
 }
 
-module.exports = {getItem, getItems, deleteItem, updateSpecificItem, isExist, sendCustomQuery, insertItem};
+module.exports = { getItem, getItems, deleteItem, updateSpecificItem, isExist, sendCustomQuery, insertItem };

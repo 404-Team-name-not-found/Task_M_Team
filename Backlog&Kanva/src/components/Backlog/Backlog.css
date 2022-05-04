@@ -1,0 +1,65 @@
+.kanban {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.backlog {
+    width: 100%;
+    background: #21213E;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.title {
+    padding: 1rem;
+    display: flex;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    /* or 58px */
+
+    letter-spacing: -0.03em;
+    text-transform: capitalize;
+    justify-content: space-between;
+}
+
+.content{
+    padding: 0.5rem;
+    height: 32rem;
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #F6C927; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f6c92767; 
+  }
+
+.count{
+    background-color: #0A0A1B;
+    width: 3rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

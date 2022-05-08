@@ -45,6 +45,7 @@ const Kanban = () => {
                                     {...provided.droppableProps} className="section"
                                     ref={provided.innerRef}>
                                     <div className="title">
+                                        <div className={section.color}></div>
                                         {section.title}
                                         <div className="count">{section.tasks.length}</div> 
                                     </div>

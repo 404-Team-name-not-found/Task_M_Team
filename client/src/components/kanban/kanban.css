@@ -1,0 +1,75 @@
+.kanban {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.section {    
+    background: #121231;
+    box-shadow: 0px 20px 70px rgba(86, 89, 146, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+
+    width: 18rem;
+}
+
+.title {    
+    background: #21213E;
+    box-shadow: 0px 20px 70px rgba(86, 89, 146, 0.1);
+    border-radius: 10px 10px 0px 0px;
+
+    padding: 1rem;
+    display: flex;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+    text-transform: capitalize;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.count{
+    background-color: #131331;
+    border-radius: 50%;
+    font-size: 15px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.green{
+    background-color: #36B176;
+;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+.blue{
+    background-color: #3685B1;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+.red{
+    background-color: #EE786C;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+.yellow{
+    background-color: #F6C927;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}

@@ -1,0 +1,10 @@
+.nb{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    background: #121231;
+    height: 100vh;
+    font-size: 0.8rem;
+}

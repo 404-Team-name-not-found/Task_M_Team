@@ -1,14 +1,12 @@
 import './App.css'
-import Backlog from './components/Backlog'
-import Kanban from './components/kanban'
-
+import TaskManager from './components/TaskManager/TaskManager'
 function App() {
     return (
         <div style={{ padding: '50px' }}>
             <h1 style={{ marginBottom: '20px' }}>
                 Kanban UI
             </h1>
-            <Kanban />
+            <TaskManager />
         </div>
     )
 }

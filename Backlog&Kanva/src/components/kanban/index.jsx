@@ -1,12 +1,16 @@
 import './kanban.css'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import mockData from '../../mockData'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from '../card'
 
-const Kanban = () => {
-    const [data, setData] = useState(mockData)
-    
+
+const Kanban = (props) => {
+
+    const [data, setData] = useState(props.data)
+
+    useEffect(()=>{
+        props.setData.setData = setData;
+    })
     const onDragEnd = result => {
         if (!result.destination) return
         const { source, destination } = result
@@ -27,12 +31,12 @@ const Kanban = () => {
             data[sourceColIndex].tasks = sourceTask
             data[destinationColIndex].tasks = destinationTask
 
-            setData(data)
+            // setData(data)
         }
     }
-
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
+        <div>
+            <DragDropContext onDragEnd={onDragEnd}>
             <div className="kanban">
                 {
                     data.map(section => (
@@ -83,6 +87,7 @@ const Kanban = () => {
                 }
             </div>
         </DragDropContext>
+        </div>
     )
 }
 

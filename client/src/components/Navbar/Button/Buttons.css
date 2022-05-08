@@ -1,13 +1,29 @@
 .button {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
     cursor: pointer;
     padding: 1rem;
     border-radius: 10px;
+    width: 12rem;
 }
 
 .button:hover{
     background-color: #F6C927;
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+    background-repeat: round;
+}
+
+.backlog {
+    background-image: url(../../../Icons/icons8-dashboard-layout-96.png);
+}
+.sprint {
+    background-image: url(../../../Icons/icons8-split-table-96.png);
+}
+.statictics {
+    background-image: url(../../../Icons/icons8-bar-chart-96.png);
 }

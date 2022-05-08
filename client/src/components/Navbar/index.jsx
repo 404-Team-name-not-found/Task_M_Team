@@ -1,34 +1,24 @@
 import './Navbar.css'
 import Button from './Button'
-
+import buttons from './buttons';
+import { useState } from 'react';
 
 import React from 'react';
 
 const Navbar = () => {
+    const [data, setData] = useState(buttons)
 
     return (
         <div className='nb'>
             <h3>ColmanDevClub</h3>
-            <Button 
-            title={"Dashboard"}
-            icon={"icon"}
-            />
-            <Button 
-            title={"Projects"}
-            icon={"icon"}
-            />
-            <Button 
-            title={"Board"}
-            icon={"icon"}
-            />
-            <Button 
-            title={"Add User"}
-            icon={"icon"}
-            />
-            <Button 
-            title={"Messages"}
-            icon={"icon"}
-            />
+            {
+                data.map(button => (
+                    <Button
+                    title={button.title}
+                    icon={button.icon}
+                    />
+                ))
+            }
         </div>
     );
 };

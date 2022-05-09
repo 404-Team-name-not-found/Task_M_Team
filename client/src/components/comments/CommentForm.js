@@ -1,22 +1,22 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Button } from "@dev-club/ds";
-const CommentForm = ({ submitLable, handleSubmit, hasCancleButton = false, initialText = "", handleCancle }) => {
+import { useState } from "react";
+import { Button, Theme } from "@dev-club/ds";
+const CommentForm = ({ submitLable, handleSubmit, hasCancleButton = false, initialText = " ", handleCancle }) => {
   const [content, setcontent] = useState(initialText);
   const isDisabled = content.length === 0;
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
+    //e.preventDefault();
     handleSubmit(content);
-    setcontent("");
+    setcontent('');
   };
   return (
     <form onSubmit={onSubmit}>
       <textarea className="comment-form-textarea" value={content} onChange={(e) => setcontent(e.target.value)} />
-      <button className="comment-form-button" disabled={isDisabled}>
-        {submitLable}
-      </button>
+      <Button as="regular" background={Theme.background.yellow} color="black" onclick={()=>onSubmit()}>
+          {submitLable}
+        </Button>
       {hasCancleButton && (
-        <Button as="regular" background="#F6C927" color="black" height={3} padding={0.2} width={10} onclick={handleCancle}>
+        <Button as="regular" background="#F6C927" color="black" height={3} padding={0.2} width={10} onclick={()=>handleCancle()}>
           Cancle
         </Button>
       )}

@@ -1,27 +1,39 @@
 .comments {
-  margin-top: 20px;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.comments-title {
+ .comments-title {
   font-size: 30px;
   margin-bottom: 20px;
 }
-
-.comments-container {
-  margin-top: 40px;
+.comment-form-textarea {
+  width: 320px;
+  height: 100px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: #121231;
+  font-size: 16px;
+  resize: none;
 }
-
+.comments-container {
+  display: flex;
+  flex-direction: column;
+}
 .comment-form-title {
   font-size: 22px;
 }
-
-.comment-form-textarea {
-  width: 100%;
-  height: 80px;
-  margin-bottom: 8px;
-  margin-top: 8px;
-  border: 1px solid rgb(107, 114, 12);
+.comment {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: yellow;
 }
+
 
 .comment-form-button {
   font-size: 16px;
@@ -45,10 +57,7 @@
   margin-left: 10px;
 }
 
-.comment {
-  display: flex;
-  margin-bottom: 28px;
-}
+
 
 .comment-image-container {
   margin-right: 12px;

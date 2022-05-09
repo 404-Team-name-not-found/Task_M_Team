@@ -1,13 +1,15 @@
-import { Button, Theme } from "@dev-club/ds";
+import { Button, Card, Theme } from "@dev-club/ds";
 import React from "react";
 import CommentForm from "./CommentForm";
 
-const Comment = ({ comment, currentUserId, deleteComment, isEdit, setEdit, editComment, updateComment }) => {
+const Comment = ({ comment, currentUserId, deleteComment, activeComment,setActiveComment,updateComment }) => {
   const fiveMin = 300000;
   const timePassed = new Date() - new Date(comment.createdAt) > fiveMin;
   const canEdit = currentUserId === comment.userId && !timePassed;
   const canDelete = currentUserId === comment.userId;
+  const isEdit = activeComment && activeComment.type==='edit' && activeComment.id===comment.id;
   return (
+    <Card height={5} width={20} color={Theme.background.blue} >
     <div className="comment">
       <div className="comment-image-container">
         <img src="/user-icon.png"></img>
@@ -17,7 +19,7 @@ const Comment = ({ comment, currentUserId, deleteComment, isEdit, setEdit, editC
           <div className="comment-author">{comment.username}</div>
           <div>{new Date(comment.createdAt).toLocaleString()}</div>
         </div>
-        <div className="comment-text">{comment.body}</div>
+        {!isEdit ? <div className="comment-text">{comment.body}</div> : <CommentForm submitLable={"update"} hasCancleButton initialText={comment.body} handleSubmit={(text)=>updateComment(text,comment.id)} handleCancle={()=>setActiveComment(null)}></CommentForm>}
         <div className="comment-actions">
           {canDelete && (
             <Button as="regular" background="#F6C927" color="black" height={3} padding={0.2} width={10} onclick={() => deleteComment(comment.id)}>
@@ -25,14 +27,14 @@ const Comment = ({ comment, currentUserId, deleteComment, isEdit, setEdit, editC
             </Button>
           )}
           {canEdit && (
-            <Button as="regular" background="#F6C927" color="black" height={3} padding={0.2} width={10} onclick={() => setEdit(comment.id)}>
+            <Button as="regular" background="#F6C927" color="black" height={3} padding={0.2} width={10} onclick={() => setActiveComment({id:comment.id,type:"edit"})}>
               Edit
             </Button>
           )}
-          {isEdit && <CommentForm submitLable="update" intinitalState={comment.content} hasCancelButton handleSubmit={(content) => updateComment(content, comment.id)} handleCancle="" />}
         </div>
       </div>
     </div>
+    </Card>
   );
 };
 

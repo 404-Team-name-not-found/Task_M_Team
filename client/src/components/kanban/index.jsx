@@ -1,8 +1,8 @@
 import './kanban.css'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import mockData from '../../mockData'
+import mockData from '../../Data/mockData'
 import { useState } from 'react'
-import Card from '../card'
+import Card from '../Card'
 
 const Kanban = () => {
     const [data, setData] = useState(mockData)

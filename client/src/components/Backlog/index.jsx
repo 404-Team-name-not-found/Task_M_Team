@@ -1,8 +1,8 @@
 import './Backlog.css'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import mockData from '../../mockData'
+import mockData from '../../Data/mockData'
 import { useState } from 'react'
-import Card from '../card'
+import Card from '../Card'
 import { v4 as uuidv4 } from 'uuid'
 
 

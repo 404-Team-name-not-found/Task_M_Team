@@ -1,25 +1,26 @@
-import { useState } from 'react'
 import './App.css'
-import Backlog from './components/Backlog'
-import Kanban from './components/kanban'
 import Navbar from './components/Navbar'
+import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
+import SpirntPage from './Pages/SpirntPage'
+import BacklogPage from './Pages/BacklogPage'
+import StatisticsPage from './Pages/StatisticsPage'
 
 function App() {
-    const [content, setContent] = useState(<Kanban/>);
-    const [title, setTitle] = useState("Sprint Dash");
-    
     return (
+        <Router>
         <div className='container'>
-        <div className='apps'>
-            <h3> {title} </h3>
-            {content}
-        </div>
         <div className='Navbar'>
-            <Navbar content={content}>
-
-            </Navbar>
+            <Navbar/>
         </div>
+        <div className='apps'>
+            <Routes>
+                <Route path="/sprint" element={<SpirntPage/>}/>
+                <Route path="/backlog" element={<BacklogPage/>}/>
+                <Route path="/statistics" element={<StatisticsPage/>}/>
+            </Routes>
+            </div>
         </div>
+        </Router>
     )
 }
 

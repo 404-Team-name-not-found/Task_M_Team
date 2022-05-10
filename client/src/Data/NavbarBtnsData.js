@@ -15,20 +15,8 @@ const buttons =[
     },
     {
         id: uuidv4(),
-        title: "Statictics",
-        icon: "statictics",
-        url: "",
-    },
-    {
-        id: uuidv4(),
-        title: "Add User",
-        icon: "icon",
-        url: "",
-    },
-    {
-        id: uuidv4(),
-        title: "Dashboard",
-        icon: "icon",
+        title: "Statistics",
+        icon: "statistics",
         url: "",
     },
 ]

@@ -19,6 +19,12 @@ const buttons =[
         icon: "statistics",
         url: "",
     },
+    {
+        id: uuidv4(),
+        title: "DND Test",
+        icon: "dnd",
+        url: "",
+    },
 ]
 
 export default buttons

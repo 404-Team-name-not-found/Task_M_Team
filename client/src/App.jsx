@@ -1,9 +1,11 @@
 import './App.css'
-import Navbar from './components/Navbar'
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
+import Navbar from './components/Navbar'
 import SpirntPage from './Pages/SpirntPage'
 import BacklogPage from './Pages/BacklogPage'
 import StatisticsPage from './Pages/StatisticsPage'
+import DragList from './components/DNDList/DragList'
+import BoardTest from './components/BoardTest'
 
 function App() {
     return (
@@ -14,9 +16,10 @@ function App() {
         </div>
         <div className='apps'>
             <Routes>
-                <Route path="/sprint" element={<SpirntPage/>}/>
                 <Route path="/backlog" element={<BacklogPage/>}/>
+                <Route path="/sprint" element={<SpirntPage/>}/>
                 <Route path="/statistics" element={<StatisticsPage/>}/>
+                <Route path="/dnd" element={<BoardTest/>}/>
             </Routes>
             </div>
         </div>

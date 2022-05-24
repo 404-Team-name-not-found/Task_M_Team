@@ -11,24 +11,25 @@ const Kanban = () => {
         if (!result.destination) return
         const { source, destination } = result
 
-        if (source.droppableId !== destination.droppableId) {
-            const sourceColIndex = data.findIndex(e => e.id === source.droppableId)
-            const destinationColIndex = data.findIndex(e => e.id === destination.droppableId)
+        const sourceColIndex = data.findIndex(e => e.id === source.droppableId)
+        const destinationColIndex = data.findIndex(e => e.id === destination.droppableId)
 
-            const sourceCol = data[sourceColIndex]
-            const destinationCol = data[destinationColIndex]
-
-            const sourceTask = [...sourceCol.tasks]
-            const destinationTask = [...destinationCol.tasks]
-
+        const sourceTask = [...data[sourceColIndex].tasks]
+        const destinationTask = [...data[destinationColIndex].tasks]
+        
+        if (source.droppableId !== destination.droppableId){
             const [removed] = sourceTask.splice(source.index, 1)
             destinationTask.splice(destination.index, 0, removed)
-
             data[sourceColIndex].tasks = sourceTask
             data[destinationColIndex].tasks = destinationTask
-
-            setData(data)
         }
+        else {
+            const [removed] = sourceTask.splice(source.index, 1)
+            sourceTask.splice(destination.index, 0, removed)
+            data[sourceColIndex].tasks = sourceTask
+        }
+        
+        setData(data)
     }
 
     return (
@@ -36,10 +37,7 @@ const Kanban = () => {
             <div className="kanban">
                 {
                     data.map(section => (
-                        <Droppable
-                            key={section.id}
-                            droppableId={section.id}
-                        >
+                        <Droppable key={section.id} droppableId={section.id}>
                             {(provided) => (
                                 <div
                                     {...provided.droppableProps} className="section"

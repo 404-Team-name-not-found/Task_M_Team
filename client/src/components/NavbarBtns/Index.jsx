@@ -2,7 +2,6 @@ import "./NavbarBtns.css"
 import React from 'react';
 import { useState } from "react";
 
-
 const Index = props => {
     const [style, setStyle] = useState("button");
 
@@ -11,9 +10,10 @@ const Index = props => {
     }
 
     return (
-        <div className={style} onClick={()=>{props.onClick(props.title);setActive()}}>
-            <div className={"icon " + props.icon+"-icon"}></div>
-            <h1>{props.title}</h1>
+        <div className={style} onClick={()=>{
+            props.onClick(props.content.title);setActive()}}>
+            <div className={"icon " + props.content.icon+"-icon"}></div>
+            <h1>{props.content.title}</h1>
         </div>
     );
 };

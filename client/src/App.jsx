@@ -1,29 +1,35 @@
 import './App.css'
-import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
-import Navbar from './components/Navbar'
+import {Routes,Route} from "react-router-dom";
+import TaskManager from './Pages/TaskManager';
+import LandingPage from './Pages/LandingPage';
 import SpirntPage from './Pages/SpirntPage'
 import BacklogPage from './Pages/BacklogPage'
 import StatisticsPage from './Pages/StatisticsPage'
-import DragList from './components/DNDList/DragList'
 import BoardTest from './components/BoardTest'
+import ProtectedRoute from './ProtectedRoutes';
+import Navbar from './components/Navbar'
 
-function App() {
+
+const App = () => {
     return (
-        <Router>
         <div className='container'>
         <div className='Navbar'>
             <Navbar/>
         </div>
         <div className='apps'>
             <Routes>
-                <Route path="/backlog" element={<BacklogPage/>}/>
-                <Route path="/sprint" element={<SpirntPage/>}/>
-                <Route path="/statistics" element={<StatisticsPage/>}/>
-                <Route path="/dnd" element={<BoardTest/>}/>
+                <Route path="/" element={<LandingPage/>}/>
+                <Route element={<ProtectedRoute/>}>
+                    <Route path="/app" element={<TaskManager/>}/>
+                    <Route path="/backlog" element={<BacklogPage/>}/>
+                    <Route path="/sprint" element={<SpirntPage/>}/>
+                    <Route path="/statistics" element={<StatisticsPage/>}/>
+                    <Route path="/dnd" element={<BoardTest/>}/>
+                    <Route path='*' component={()=> "404 NOT FOUND"}/>
+                </Route> 
             </Routes>
-            </div>
         </div>
-        </Router>
+    </div>
     )
 }
 

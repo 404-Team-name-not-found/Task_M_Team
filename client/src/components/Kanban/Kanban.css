@@ -1,7 +1,14 @@
+[data-rbd-droppable-id="board-droppable"] {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+}
 .react-kanban-board{
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
-    gap: 1rem;
+    justify-content: space-between;
+    width: 100%;
 }
 .react-kanban-card{}
 .react-kanban-card-skeleton{}
@@ -13,7 +20,6 @@
 .react-kanban-card__title{}
 .react-kanban-column{
     background-color: #121231;
-    box-shadow: 0px 20px 70px rgba(86, 89, 146, 0.1);
     border-radius: 10px;
     padding: 1rem;
     width: 22rem;
@@ -35,9 +41,7 @@
 }
 .react-kanban-column-header{
     background: #21213E;
-    box-shadow: 0px 20px 70px rgba(86, 89, 146, 0.1);
     border-radius: 10px 10px 0px 0px;
-
     padding: 1rem;
     display: flex;
     font-style: normal;
@@ -47,8 +51,6 @@
     margin-bottom: 1rem;
     letter-spacing: -0.03em;
     text-transform: capitalize;
-    justify-content: space-between;
-    align-items: center;
 }
 .react-kanban-column-header__button{
 

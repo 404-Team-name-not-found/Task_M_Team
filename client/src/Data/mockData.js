@@ -6,6 +6,7 @@ const mockData = [
             {
                 id: 0,
                 title: "Available",
+                color: "orange",
                 cards: [
                     {
                         id: 0,
@@ -27,6 +28,7 @@ const mockData = [
             {
                 id: 1,
                 title: "Open",
+                color: "green",
                 cards: [
                     {
                         id: 3,
@@ -48,6 +50,7 @@ const mockData = [
             {
                 id: 2,
                 title: "In progress",
+                color: "blue",
                 cards: [
                     {
                         id: 6,
@@ -69,6 +72,7 @@ const mockData = [
             {
                 id: 3,
                 title: "Resolved",
+                color: "red",
                 cards: [
                     {
                         id: 9,
@@ -90,6 +94,7 @@ const mockData = [
             {
                 id: 4,
                 title: "Closed",
+                color: "yellow",
                 cards: [
                     {
                         id: 12,

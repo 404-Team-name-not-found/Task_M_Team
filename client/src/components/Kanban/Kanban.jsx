@@ -1,15 +1,16 @@
 import "./Kanban.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ColumnHeader from "../ColumnHeader/ColumnHeader";
 import Card from "../Card/Card";
 import Board, { moveCard } from '@asseinfo/react-kanban'
-import mockData from "../../Data/mockData";
+import BoardContext from "../../Context/BoardContext";
 
 export default function Kanban() {
-    const [controlledBoard, setBoard] = useState(mockData[0]);
+    const [selectedBoard, setSelectedBoard] = useContext(BoardContext);
+    const [controlledBoard, setBoard] = useState(selectedBoard);
     useEffect(() => {
-        console.log(controlledBoard.columns[0].cards);
-    }, [controlledBoard])
+        setBoard(selectedBoard);
+    }, [selectedBoard])
     function handleCardMove(_card, source, destination) {
         const updatedBoard = moveCard(controlledBoard, source, destination);
         setBoard(updatedBoard);

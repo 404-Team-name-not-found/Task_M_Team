@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 const mockData = [
     {
+        id: 0,
+        name: "First Board",
         columns: [
             {
                 id: 0,
@@ -113,6 +115,56 @@ const mockData = [
                     }
                 ]
             },
+        ]
+    },
+    {
+        id: 1,
+        name: "Second Board",
+        columns: [
+            {
+                id: 0,
+                title: "Available",
+                color: "orange",
+                cards: [
+                    {
+                        id: 0,
+                        title: "Learn HTML",
+                        description: "Do it!"
+                    },
+                    {
+                        id: 1,
+                        title: "Learn CSS",
+                        description: "Do it!"
+                    },
+                    {
+                        id: 2,
+                        title: "Learn JS",
+                        description: "Do it!"
+                    }
+                ]
+            },
+            {
+                id: 1,
+                title: "Open",
+                color: "green",
+                cards: [
+                    {
+                        id: 3,
+                        title: "Learn SQL",
+                        description: "Do it!"
+                    },
+                    {
+                        id: 4,
+                        title: "Learn MongoDB",
+                        description: "Do it!"
+                    },
+                    {
+                        id: 5,
+                        title: "Learn Reddis",
+                        description: "Do it!"
+                    }
+                ]
+            }
         ]
     }
 ]

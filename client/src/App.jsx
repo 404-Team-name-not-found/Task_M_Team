@@ -1,6 +1,7 @@
 import './App.css'
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Kanban from './components/Kanban/Kanban';
+// import Kanban from './components/Kanban/Kanban';
+import KanbanPage from './Pages/KanbanPage';
 // import Navbar from './components/Navbar'
 // import SpirntPage from './Pages/SpirntPage'
 // import BacklogPage from './Pages/BacklogPage'
@@ -10,7 +11,8 @@ import Kanban from './components/Kanban/Kanban';
 
 function App() {
     return (
-        <Kanban></Kanban>
+        <KanbanPage></KanbanPage>
+        // <Kan
         // <Router>
         //     <div className='container'>
         //         <div className='Navbar'>

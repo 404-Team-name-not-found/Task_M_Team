@@ -1,11 +1,15 @@
-import express from 'express';
-import routes from './routes';
+import express from "express";
+import routes from "./routes/index.js";
+import bodyparser from "body-parser";
+import dotenv from "dotenv";
+const app = express();
 
-export const app = express();
 const PORT = process.env.PORT || 3000;
-
-routes(app);
-
+dotenv.config();
+//routes(app);
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use("/api/v1", routes);
+app.use(express.json());
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

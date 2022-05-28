@@ -38,6 +38,11 @@ const { getItem, getItems, addItem, updateItem, deleteItem } = genericController
 
 router.get('/all', validatorSchema(schema), getItems);
 
+//dummy route
+router.get('/', (req, res) => {
+    res.send("<h1>Server is running</h1>")
+});
+
 router.get('/:id', validatorSchema(schema), getItem);
 
 router.post('/add', validatorSchema(schema), addItem);

@@ -45,7 +45,7 @@ export const genericController = (service, itemSchema, requiredParams, itemName)
     //     },
     // };
 
-    export const getItem = async (req, reply) => {
+    const getItem = async (req, reply) => {
         const { id } = req.params;
         try {
             const { item, status, error } = await service.getitem(id);
@@ -55,7 +55,7 @@ export const genericController = (service, itemSchema, requiredParams, itemName)
         }
     }
 
-    export const getItems = async (req, reply) => {
+    const getItems = async (req, reply) => {
         try {
             const { items, status, error } = await service.getitems();
             reply.code(status).send({ responseTitle: getReasonPhrase(status), items, ...(error ? { error } : {}) });
@@ -64,7 +64,7 @@ export const genericController = (service, itemSchema, requiredParams, itemName)
         }
     }
 
-    export const addItem = async (req, reply) => {
+    const addItem = async (req, reply) => {
         try {
             const { status, error } = await service.additem(req.body);
             reply.code(status).send({ responseTitle: status === 200 ? `The ${itemName} was created successfully` : getReasonPhrase(status), ...(error ? { error } : {}) });
@@ -73,7 +73,7 @@ export const genericController = (service, itemSchema, requiredParams, itemName)
         }
     }
 
-    export const updateItem = async (req, reply) => {
+    const updateItem = async (req, reply) => {
         const { id } = req.params;
         try {
             const { status, error } = await service.updateitem(id, req.body);
@@ -83,7 +83,7 @@ export const genericController = (service, itemSchema, requiredParams, itemName)
         }
     }
 
-    export const deleteItem = async (req, reply) => {
+    const deleteItem = async (req, reply) => {
         const { id } = req.params;
         try {
             const { status, error } = await service.deleteitem(id);

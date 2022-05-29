@@ -7,7 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 dotenv.config();
 //routes(app);
-app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
 app.use("/api/v1", routes);
 app.use(express.json());
 app.listen(PORT, () => {

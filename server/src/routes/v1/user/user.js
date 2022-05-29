@@ -3,80 +3,17 @@ import { genericController } from "../../../controllers/generic.controller.js";
 import { genericService } from "../../../services/generic.service.js";
 import { validatorSchema } from "../../../services/validator.js";
 import { userValidationSchema } from "../../../utils/validationSchemas.js";
-import dotenv from "dotenv";
+
 import bcrypt from "bcrypt";
 //TODO: import messages controllers
 
 import jwt from "jsonwebtoken";
-dotenv.config();
+
 const router = express.Router();
-// const schema = {
-//   id: {
-//     in: ["body"],
-//     isInt: true,
-//   },
-//   username: {
-//     in: ["body"],
-//     isString: true,
-//     isLength: {
-//       errorMessage: "Username should be at least 6 chars long",
-//       options: { min: 6 },
-//     },
-//   },
-//   password: {
-//     in: ["body"],
-//     isString: true,
-//     isLength: {
-//       errorMessage: "Password should be at least 6 chars long",
-//       options: { min: 6 },
-//     },
-//   },
-//   imgurl: {
-//     in: ["body"],
-//     isString: true,
-//     optional: true,
-//   },
-//   title: {
-//     in: ["body"],
-//     isString: true,
-//     optional: true,
-//   },
-//   role: {
-//     in: ["body"],
-//     isString: true,
-//     optional: true,
-//   },
-//   email: {
-//     in: ["body"],
-//     init: true,
-//     isEmail: {
-//       bail: true,
-//     },
-//   },
-//   phone: {
-//     in: ["body"],
-//     isString: true,
-//     optional: true,
-//   },
-//   name: {
-//     in: ["body"],
-//     isString: true,
-//     optional: true,
-//   },
-// };
+
 const TABLE_NAME = "users";
 
 const { getItem, getItems, addItem, updateItem, deleteItem } = genericController(genericService(TABLE_NAME), {}, [], "users");
-
-// router.get("/all", , getItems);
-
-// router.get("/:id", validatorSchema(schema), getItem);
-
-// router.post("/add", validatorSchema(schema), addItem);
-
-// router.patch("/:id", validatorSchema(schema), updateItem);
-
-// router.delete(":id", validatorSchema(schema), deleteItem);
 
 router.post("/login", userValidationSchema, validatorSchema, (req, res) => {
   const { username, password } = req.body;
@@ -93,13 +30,10 @@ router.post("/login", userValidationSchema, validatorSchema, (req, res) => {
     });
   }
   const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" });
-  res.header("auth-token", token).send(token);
+  res.header("auth-token", token).status(200);
 });
 
 router.post("/register", userValidationSchema, validatorSchema, async (req, res) => {
-  //check if user already exists
-  //TODO: WHY REQ.BODY IS NULL?
-  console.log(req.body);
   const { username, password, email, name } = req.body;
   const userExists = await genericService(TABLE_NAME).getitem("username", username);
   if (userExists) {
@@ -120,7 +54,9 @@ router.post("/register", userValidationSchema, validatorSchema, async (req, res)
     const hashedpassword = await bcrypt.hash(req.body.password, 10);
     req.body.password = hashedpassword;
     const user = await addItem(req, res);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export default router;

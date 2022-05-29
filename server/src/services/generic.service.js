@@ -34,7 +34,7 @@ export const genericService = (TABLE_NAME) => {
             if (!isExist) throw new Error(`item with this id does not exist`);
 
             const res = await genericQueries.getItem(TABLE_NAME, "id", id);
-            console.log(res);
+
             return { item: res, status: StatusCodes.OK };
         } catch (err) {
             return { status: StatusCodes.BAD_REQUEST, error: err.message };

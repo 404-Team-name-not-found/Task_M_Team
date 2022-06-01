@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledForm = styled.form`
     width: 25rem; 
     height: 30rem;
-    padding: 4rem 2rem;
+    padding: 2rem 2rem;
     border-radius: 0.3rem;
     background-color: #121231;
     color: white;
@@ -11,7 +11,7 @@ export const StyledForm = styled.form`
     h2 {
         width: 100%;
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 `;
 
@@ -30,3 +30,10 @@ export const StyledInput = styled.input`
     border-radius: 0.3rem;
     margin-bottom: 1rem;
 `
+
+export const StyledRecaptchaContainer = styled.div`
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;

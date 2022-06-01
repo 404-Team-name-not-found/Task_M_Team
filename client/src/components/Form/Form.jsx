@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyledForm, StyledInput, StyledLabel } from './Form.styled';
+import { StyledForm, StyledInput, StyledLabel, StyledRecaptchaContainer } from './Form.styled';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function Form() {
+    const RECAPTCHA_KEY = process.env.REACT_APP_RECAPTCHA;
+
     const handleCaptchaCahnge = (e) => {
         console.log(e)
     }
+
     return (
         <StyledForm action='/'>
             <h2>Login</h2>
@@ -13,10 +16,12 @@ export default function Form() {
             <StyledInput type="text" id="username" placeholder="Enter username..." required />
             <StyledLabel htmlFor="password">Password:</StyledLabel>
             <StyledInput type="password" id="password" placeholder="Enter password..." required />
-            <ReCAPTCHA 
-                sitekey={process.env.RECAPTCHA_V2_KEY_FRONT}
-                onChange={handleCaptchaCahnge}
-            />
+            <StyledRecaptchaContainer>
+                <ReCAPTCHA
+                    sitekey={RECAPTCHA_KEY}
+                    onChange={handleCaptchaCahnge}
+                />
+            </StyledRecaptchaContainer>
         </StyledForm>
     )
-}
+};

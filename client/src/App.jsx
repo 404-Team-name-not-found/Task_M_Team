@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Kanban from './components/Kanban/Kanban';
 import KanbanPage from './Pages/KanbanPage';
 import LoginPage from './Pages/LoginPage';
+import SignupPage from './Pages/SignupPage';
 // import Navbar from './components/Navbar'
 // import SpirntPage from './Pages/SpirntPage'
 // import BacklogPage from './Pages/BacklogPage'
@@ -23,6 +24,7 @@ function App() {
                     <Routes>
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/kanban" element={<KanbanPage />} />
+                        <Route path="/signup" element={<SignupPage />} />
                         {/* <Route path="/backlog" element={<BacklogPage />} />
                         <Route path="/sprint" element={<SpirntPage />} />
                         <Route path="/statistics" element={<StatisticsPage />} />

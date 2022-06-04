@@ -1,0 +1,2 @@
+export const usernameFilter = /[^a-z0-9_]/gi; // Match everything that is not a username
+export const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;

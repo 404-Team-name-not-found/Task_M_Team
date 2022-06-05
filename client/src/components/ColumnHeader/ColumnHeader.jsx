@@ -1,12 +1,17 @@
-import React from 'react'
-import { StyledColumnHeader, StyledIndicator, StyledTitle, StyledCounter } from './ColumnHeader.styled';
+import React from "react";
+import {
+  StyledColumnHeader,
+  StyledIndicator,
+  StyledTitle,
+  StyledCounter,
+} from "./ColumnHeader.styled";
 
-export default function ColumnHeader({ title, color, number }) {
-    return (
-        <StyledColumnHeader>
-            <StyledIndicator color={color} />
-            <StyledTitle>{title}</StyledTitle>
-            <StyledCounter>{number}</StyledCounter>
-        </StyledColumnHeader>
-    );
+export default function ColumnHeader({ title, color, number, onchange }) {
+  return (
+    <StyledColumnHeader>
+      <StyledIndicator color={color} />
+      <StyledTitle onChange={onchange} type="text" value={title} />
+      <StyledCounter>{number}</StyledCounter>
+    </StyledColumnHeader>
+  );
 }

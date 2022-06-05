@@ -24,6 +24,7 @@ export default function Form() {
                     ref={recaptchaRef}
                     sitekey={RECAPTCHA_KEY}
                     onChange={handleCaptchaCahnge}
+                    theme="dark"
                 />
             </StyledRecaptchaContainer>
             <Button

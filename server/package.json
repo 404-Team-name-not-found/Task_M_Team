@@ -5,7 +5,8 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --es-module-specifier-resolution=node src/server.js"
+    "dev": "nodemon --es-module-specifier-resolution=node src/server.js",
+    "migrate:run": "db-migrate up init"
   },
   "keywords": [],
   "author": "",

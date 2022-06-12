@@ -4,7 +4,7 @@ import { emailRegex } from "../../Regex";
 const validateEmail = email => {
     return emailRegex.test(email);
 }
-export default function formValidation(username, email, password, repeatPassword, captcha, errors) {
+export default function formValidation(username, email, password, repeatPassword, captcha, errors) {    
     const data_username = !!!username;
     const data_email_required = !!!email;
     const data_email_invalid = !validateEmail(email);

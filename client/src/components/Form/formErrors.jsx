@@ -4,7 +4,7 @@ export class PriorityQueue {
     getQueue() { return this.queue; }
     isEmpty() { return !!!this.queue.length; }
     add(error, index) { this.queue.splice(index, 0, error); }
-    remove() { queue.shift(); }
+    remove() { this.queue.shift(); }
     addMultiple(errors) {
         errors.forEach(error => this.enqueue(error));
     }
@@ -18,7 +18,7 @@ export class PriorityQueue {
         });
         if (!added) this.queue.push([error, priority, display]);
     }
-    dequeue() { queue.shift(); }
+    dequeue() { this.queue.shift(); }
     getFirst() {
         const filteredArray = this.queue.filter(element => element[2] === true);
         return filteredArray.length ? filteredArray[0][0] : "";
@@ -39,12 +39,9 @@ export const setErrorsQueue = (data) => {
     const repeatPassword = new PriorityQueue();
     const status = data.status.data;
     username.enqueue([formErrors.required, 1, data.username.required.display]);
-    email.enqueue([formErrors.required, 1, data.email.required.display]);
-    email.enqueue([formErrors.email, 10, data.email.invalid.display]);
-    console.log(email);
-    // email.addMultiple([[formErrors.required, 1, data.email.required.display], [formErrors.email, 10, data.email.invalid.display]]);
+    email.addMultiple([[formErrors.required, 1, data.email.required.display], [formErrors.email, 10, data.email.invalid.display]]);
     password.enqueue([formErrors.required, 1, data.password.required.display]);
-    repeatPassword.addMultiple([[formErrors.required, 1, data.repeatPassword.required.display], [formErrors.match, 10, true]]);
+    repeatPassword.addMultiple([[formErrors.required, 1, data.repeatPassword.required.display], [formErrors.match, 10, data.repeatPassword.match.display]]);
 
     return { status, username, email, password, repeatPassword }
 }

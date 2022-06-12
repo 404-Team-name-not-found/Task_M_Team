@@ -26,7 +26,8 @@ export default function Form({ variant }) {
 
     useEffect(() => {
         setErrors(setErrorsQueue(formValidation(username, email, password, repeatPassword, isChecked, errors)));
-        setSubmit(errors.status.data);
+        setSubmit(errors.status);
+        console.log(submit);
     }, [username, email, password, repeatPassword, isChecked]);
 
 
@@ -37,13 +38,15 @@ export default function Form({ variant }) {
             <StyledInput type="text" id="username" placeholder="Enter username..." required />
             <StyledLabel htmlFor="password">Password:</StyledLabel>
             <StyledInput type="password" id="password" placeholder="Enter password..." required />
-            {/* <StyledRecaptchaContainer> */}
-            {/* <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={RECAPTCHA_KEY}
-                    onChange={handleCaptchaCahnge}
+            <StyledRecaptchaContainer>
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={RECAPTCHA_KEY}
+                  onChange={e => { handleCaptchaChange(true); }}
+                  theme={"dark"}
+                  onExpired={e => { handleCaptchaChange(false); }}
                     />
-                </StyledRecaptchaContainer> */}
+            </StyledRecaptchaContainer>
             <Button
                 disabled={!isChecked}
                 width={12}

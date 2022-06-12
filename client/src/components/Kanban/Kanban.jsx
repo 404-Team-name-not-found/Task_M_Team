@@ -1,4 +1,4 @@
-import "./Kanban.css";
+import "./kanban.css";
 import { useState, useEffect, useContext } from "react";
 import ColumnHeader from "../ColumnHeader/ColumnHeader";
 import Card from "../Card/Card";

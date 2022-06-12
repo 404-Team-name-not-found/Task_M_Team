@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log(process.env.DATABASE_HOST_NAME);
 export const pool = new pg.Pool({
   host: process.env.DATABASE_HOST_NAME,
   port: process.env.DATABASE_PORT,

@@ -3,7 +3,6 @@ import { genericController } from "../../../controllers/generic.controller.js";
 import { genericService } from "../../../services/generic.service.js";
 import { validatorSchema } from "../../../services/validator.js";
 import { userValidationSchema } from "../../../utils/validationSchemas.js";
-
 import bcrypt from "bcrypt";
 //TODO: import messages controllers
 

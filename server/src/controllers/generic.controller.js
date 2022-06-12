@@ -77,7 +77,7 @@ export function genericController(service, itemSchema, requiredParams, itemName)
       const { status, error } = await service.additem(req.body);
       reply.code(status).send({ responseTitle: status === 200 ? `The ${itemName} was created successfully` : getReasonPhrase(status), ...(error ? { error } : {}) });
     } catch (err) {
-      reply.code(StatusCodes.BAD_REQUEST).send({ responseTitle: getReasonPhrase(StatusCodes.BAD_REQUEST), error: { message: err } });
+      reply.send({ responseTitle: StatusCodes.getReasonPhrase(StatusCodes.BAD_REQUEST), error: err });
     }
   };
 

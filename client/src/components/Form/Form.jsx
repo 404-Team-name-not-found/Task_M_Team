@@ -77,15 +77,7 @@ export default function Form({ variant }) {
                     onChange={e => { handleCaptchaChange(true); }}
                     theme={"dark"}
                     onExpired={e => { handleCaptchaChange(false); }}
+                    onChange={handleCaptchaCahnge}
+                    theme="dark"
                 />
-            </StyledRecaptchaContainer>
-            <Button
-                disabled={!submit}
-                width={12}
-                height={2}
-            >
-                Submit
-            </Button>
-        </StyledForm>
-    )
-};
+

@@ -6,8 +6,6 @@ export const StyledError = styled.p`
     text-align: start;
 `;
 export const StyledForm = styled.form`
-    position: absolute;
-    left: 50%;
     align-items: center;
     flex-direction: column;
     width: 25rem; 

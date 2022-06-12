@@ -1,12 +1,12 @@
-const { StatusCodes } = require("http-status-codes");
-const genericQueries = require("./genericCrudQueries");
+import StatusCodes from "http-status-codes";
+import genericQueries from "../utils/genericCrudQueries.utils.js";
 
 /**
  * Used to generate a service for the given item
  * @param {*} TABLE_NAME The DB table name that co-respone to the item
  * @returns
  */
-const genericService = (TABLE_NAME) => {
+export const genericService = (TABLE_NAME) => {
   /**
    * Used to get all existing items.
    *
@@ -22,15 +22,14 @@ const genericService = (TABLE_NAME) => {
   }
 
   /**
-   * Used to get a item by id.
-   *
-   * @param {number} id (number representing the item's id)
-   *
-   * @returns relevant status code and the wanted item object.
+   * used to get a specific item by a key and value
+   * @param {any} key
+   * @param {any} value
+   * @returns
    */
-  async function getitem(id) {
+  async function getitem(key, value) {
     try {
-      const isExist = await genericQueries.isExist(TABLE_NAME, "id", id);
+      const isExist = await genericQueries.isExist(TABLE_NAME, key, value);
       if (!isExist) throw new Error(`item with this id does not exist`);
 
       const res = await genericQueries.getItem(TABLE_NAME, "id", id);
@@ -99,5 +98,3 @@ const genericService = (TABLE_NAME) => {
 
   return { getitem, getitems, deleteitem, updateitem, additem };
 };
-
-module.exports = { genericService };

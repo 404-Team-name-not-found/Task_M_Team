@@ -10,8 +10,7 @@ const Index = props => {
     }
 
     return (
-        <div className={style} onClick={()=>{
-            props.onClick(props.content.title);setActive()}}>
+        <div className={style} onClick={()=>setActive()}>
             <div className={"icon " + props.content.icon+"-icon"}></div>
             <h1>{props.content.title}</h1>
         </div>

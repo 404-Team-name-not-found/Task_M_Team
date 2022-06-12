@@ -2,14 +2,16 @@ import './Navbar.css'
 import Button from '../NavbarBtns/Index'
 import buttons from '../../Data/NavbarBtnsData';
 import { useState } from 'react';
-import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid'
-import { NavLink } from 'react-router-dom';
+import { NavLink , useNavigate } from 'react-router-dom';
+import auth from '../../auth'
 
 
 const Navbar = props => {
     const [data, setData] = useState(buttons)
+    let navigate = useNavigate();
+
 
     return (
             <div className='nb'>
@@ -20,12 +22,18 @@ const Navbar = props => {
                     <Button
                     key={uuidv4()}
                     content={button}
-                    onClick={props.onClick}
                     /> 
                     </NavLink>
                 ))
             }
-            </div>
+            <button onClick={()=> {
+                    auth.logout(()=>{
+                        navigate("/")
+                    })
+                }}
+                >
+                Login</button>
+        </div>
     );
 };
 

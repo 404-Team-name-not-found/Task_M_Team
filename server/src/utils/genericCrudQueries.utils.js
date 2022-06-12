@@ -1,4 +1,4 @@
-const pool = require("../sql.connections").pool;
+import {pool} from './sqlConnection.utils.js';
 
 //helper function
 const getKeysAndValues = (object) => {
@@ -95,4 +95,4 @@ async function insertItem(tablename, objectToInsert) {
   return res.rows;
 }
 
-module.exports = { getItem, getItems, deleteItem, updateSpecificItem, isExist, sendCustomQuery, insertItem };
+export default { getItem, getItems, deleteItem, updateSpecificItem, isExist, sendCustomQuery, insertItem };

@@ -1,5 +1,11 @@
-import validator from 'express-validator';
+import expressvalidator from "express-validator";
 
-export function validatorSchema(obj) {
-    return validator.checkSchema(obj);
+export function validatorSchema(req, res, next) {
+  const error = expressvalidator.validationResult(req);
+  if (!error.isEmpty()) {
+    return res.status(400).json({
+      error: error.array()[0].msg,
+    });
+  }
+  next();
 }

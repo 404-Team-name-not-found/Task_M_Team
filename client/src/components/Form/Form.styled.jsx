@@ -1,11 +1,15 @@
 import styled from "styled-components";
-
+export const StyledError = styled.p`
+    color: #ff3333;
+    font-size: 0.75rem;
+    width: 100%;
+    text-align: start;
+`;
 export const StyledForm = styled.form`
-    display: flex;
     align-items: center;
     flex-direction: column;
     width: 25rem; 
-    height: 30rem;
+    min-height: 30rem;
     padding: 2rem 2rem;
     border-radius: 0.3rem;
     background-color: #121231;
@@ -31,7 +35,7 @@ export const StyledInput = styled.input`
     border: none;
     color: white;
     border-radius: 0.3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
 `
 
 export const StyledRecaptchaContainer = styled.div`

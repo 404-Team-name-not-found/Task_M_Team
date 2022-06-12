@@ -27,7 +27,6 @@ export default function Form({ variant }) {
     useEffect(() => {
         setErrors(setErrorsQueue(formValidation(username, email, password, repeatPassword, isChecked, errors)));
         setSubmit(errors.status);
-        console.log(submit);
     }, [username, email, password, repeatPassword, isChecked]);
 
 

@@ -6,11 +6,12 @@ export const StyledError = styled.p`
     text-align: start;
 `;
 export const StyledForm = styled.form`
-    display: flex;
+    position: absolute;
+    left: 50%;
     align-items: center;
     flex-direction: column;
     width: 25rem; 
-    height: 30rem;
+    min-height: 30rem;
     padding: 2rem 2rem;
     border-radius: 0.3rem;
     background-color: #121231;

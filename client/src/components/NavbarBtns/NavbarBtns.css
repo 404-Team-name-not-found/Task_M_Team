@@ -1,0 +1,32 @@
+.button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 12rem;
+}
+.active{
+    background-color: #f6c927;
+    border-radius: 10px;
+    transform: scale(1.05);
+}
+.button:hover{
+    background-color: #f6c92773;
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+    background-repeat: round;
+}
+.backlog-icon {
+    background-image: url(../../Icons/BacklogIcon.png);
+}
+.sprint-icon {
+    background-image: url(../../Icons/icons8-split-table-96.png);
+}
+.statistics-icon {
+    background-image: url(../../Icons/icons8-bar-chart-96.png);
+}

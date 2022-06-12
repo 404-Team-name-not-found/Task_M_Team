@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 body {
     background-color: #21213E;
     color: #E4E4E4;
@@ -15,7 +20,7 @@ body {
 
 .container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 .apps{
@@ -23,8 +28,13 @@ body {
     margin: 1rem;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .navbar{
     width: 15%;
+}
+
+h3{
+    margin-bottom: 2rem;
 }
